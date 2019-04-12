@@ -3,7 +3,7 @@
 /* 190411 */
 
 /*
-button mapping on header from keypad
+mapping of keypad button to pinrow header (SEE PIC in DOC folder)
 1	ka1 11, 6 
 2	ka2 11, 7 
 3	ka3 11, 8
@@ -17,13 +17,14 @@ clr	kb4 4, 9
 7	kc1 5, 6
 8	kc2 5, 7
 9	kc3 5, 8
+* button does not exist *
 
 *	kd1 10, 6
 0	kd2 10, 7Serial.print
 #	kd3 10, 8
 ent	kd4 10, 9
 
-mapping from header to arduino:
+mapping of pinrow header to arduino pin:
 	MAP 11 to pin 10, 4 to pin 11, 5 to pin 12, 10 to 13
 	keep 6-9 mapped to themselves
 */
@@ -68,7 +69,6 @@ bool pressed(uint8_t button) {
 	/* TODO: maybe add debouncing??? */
 	if(digitalRead(button) == 0) {
 		return true;
-		
 	}
 	return false;
 }
@@ -82,6 +82,7 @@ void loop() {
 			if(pressed(col[j])) {
 				Serial.println(button[i][j]);
 			}
+			/*TODO: may add button release check? */
 		}
 	}
 }
